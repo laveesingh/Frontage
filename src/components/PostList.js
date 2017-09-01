@@ -2,6 +2,7 @@ import React from 'react';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import BaseUrl from '../utils/config';
+import PostCard from './PostCard';
 
 var $ = require("jquery");
 
@@ -40,14 +41,7 @@ export default class PostList extends React.Component{
     if(!this.state.posts) return;
     console.log("this.state.posts in setPostsData: " + JSON.stringify(this.state.posts));
    const mappedPostCards = this.state.posts.map( (post) => (
-        <Card key={post.id} >
-          <CardContent>
-            <h1>{post.id}</h1>
-            <h2>{post.author}</h2>
-            <h3>{post.title}</h3>
-            <h4>{post.content}</h4>
-          </CardContent>
-        </Card>
+         <PostCard post={post} />
     ));
     this.setState({
       postCards: mappedPostCards,

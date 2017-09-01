@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardHeader, CardTitle, CardText} from 'material-ui/Card';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
 
 export default class PostCard extends React.Component{
 
@@ -10,11 +10,12 @@ export default class PostCard extends React.Component{
   render(){
     return(
         <Card key={this.props.post.id} >
-          <CardHeader title={this.props.post.title} subtitle={this.props.post.author} />
-          <CardTitle title={this.props.post.title} />
-          <CardText>
-            {this.props.post.content}
-          </ CardText>
+          <CardContent>
+            <h1>{this.props.post.id}</h1>
+            <h2>{this.props.post.author}</h2>
+            <h3>{this.props.post.title}</h3>
+            <h4>{this.props.post.content}</h4>
+          </CardContent>
         </Card>
     );
   }
