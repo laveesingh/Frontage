@@ -17,7 +17,7 @@ class App extends React.Component {
         <Router >
           <div>
             <Base />
-            <Route path="/" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route path="/posts/" component={PostList} />
             <Route path="/post/:id" component={PostDetail} />
           </div>
