@@ -29,6 +29,9 @@ export default class Base extends React.Component{
             <Button color="contrast" label="PostList" primary={true} raised style={Styles.raisedButton} >
               <Link to="/posts/" style={{marginRight: "10px" }}> PostList </Link>
             </Button>
+            <Button color="contrast" label="CreatePost" primary={true} raised style={Styles.raisedButton} >
+              <Link to="/posts/create/" style={{marginRight: "10px" }}> CreatePost </Link>
+            </Button>
           </Toolbar>
         </AppBar>
 

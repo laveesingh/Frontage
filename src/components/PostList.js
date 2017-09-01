@@ -1,5 +1,4 @@
 import React from 'react';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import BaseUrl from '../utils/config';
 import PostCard from './PostCard';

@@ -8,6 +8,7 @@ import Base from './components/Base';
 import Home from './components/Home';
 import PostList from './components/PostList';
 import PostDetail from './components/PostDetail';
+import PostCreate from './components/PostCreate';
 
 import './App.css';
 
@@ -18,8 +19,9 @@ class App extends React.Component {
           <div>
             <Base />
             <Route exact path="/" component={Home} />
-            <Route path="/posts/" component={PostList} />
+            <Route exact path="/posts/" component={PostList} />
             <Route path="/post/:id" component={PostDetail} />
+            <Route path="/posts/create/" component={PostCreate} />
           </div>
         </Router>
     );
