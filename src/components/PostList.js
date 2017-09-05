@@ -24,7 +24,7 @@ export default class PostList extends React.Component{
       success: function(data, status, xhr){
         console.log("Data from server: " + JSON.stringify(data));
         _this.setState({
-          posts: data.posts,
+          posts: data,
         }, function(){
           _this.setPostsData();
         });
