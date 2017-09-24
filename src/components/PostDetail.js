@@ -15,17 +15,14 @@ export default class PostDetail extends React.Component{
 
   componentDidMount(){
     const id = this.props.match.params.id;
-    var _this = this;
-    $.ajax({
-      url: BaseUrl + "/api/post_detail/" + id + "/",
-      type: "GET",
-      success: function(data, status, xhr){
-        _this.setPostData(data);
-      },
-      error: function(xhr, status, error){
-        console.log(error);
-      },
-    });
+    var url = BaseUrl + "/api/post_detail/" + id + "/"
+    fetch(url).then(
+      (response) => {
+        this.setPostData(response)
+      }
+    )
+    //var _this = this;
+    //$.ajax({ url: BaseUrl + "/api/post_detail/" + id + "/", type: "GET", success: function(data, status, xhr){ _this.setPostData(data); }, error: function(xhr, status, error){ console.log(error); }, });
   }
 
   setPostData(data){
