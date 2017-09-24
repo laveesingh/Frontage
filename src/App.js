@@ -11,8 +11,6 @@ import PostDetail from './components/PostDetail';
 import PostCreate from './components/PostCreate';
 import PostEdit from './components/PostEdit';
 
-import './App.css';
-
 class App extends React.Component {
   render() {
     return (
