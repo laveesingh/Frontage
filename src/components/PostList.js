@@ -1,62 +1,59 @@
-import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import BaseUrl from '../utils/config';
-import PostCard from './PostCard';
+import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { postListFetchData } from '../actions/postList'
 
-var $ = require("jquery");
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { $SERVER } from '../utils/config'
+import PostCard from './PostCard'
 
-export default class PostList extends React.Component{
-  constructor(props){
-    super(props);
-    this.setPostsData = this.setPostsData.bind(this);
-    this.state = {
-      posts: [], 
-      postCards: null,
-    }
-  }
+var $ = require('jquery')
+
+class PostList extends React.Component{
 
   componentDidMount(){
-    console.log("componentDidMount invoked");
-    var _this = this;
-    $.ajax({
-      url: BaseUrl + "/api/post_list/",
-      type: "GET",
-      success: function(data, status, xhr){
-        console.log("Data from server: " + JSON.stringify(data));
-        _this.setState({
-          posts: data,
-        }, function(){
-          _this.setPostsData();
-        });
-      },
-      error: function(xhr, status, error){
-        console.error(error);
-      }
-    });
+    console.log('componentDidMount invoked')
+    this.props.fetchData($SERVER + '/api/post_list/')
   }
-
-  setPostsData(){
-    console.log("setPostsData invoked");
-    if(!this.state.posts) return;
-    console.log("this.state.posts in setPostsData: " + JSON.stringify(this.state.posts));
-   const mappedPostCards = this.state.posts.map( (post) => (
-         <PostCard post={post} />
-    ));
-    this.setState({
-      postCards: mappedPostCards,
-    }, function(){
-      console.log("State.MappedPostCards: " + JSON.stringify(this.state.postCards));
-    });
-  }
-
 
   render(){
+    console.log('Here are the component props:', this.props)
+    if (this.props.hasErrored)
+      return ( <p> Sorry! There was an error loading the posts </p> )
+    if (this.props.isLoading)
+      return ( <p>Loading...</p> )
     return (
         <MuiThemeProvider>
         <div>
-          { this.state.postCards }
+          { this.props.postList 
+            ? this.props.postList.map((post) => <PostCard post={post} key={post.id} />)
+            : null
+          }
+          <button onClick={()=>{console.log("postList:", this.props.postList)}}>Know Props </button>
         </div>
-        </ MuiThemeProvider>
+        </MuiThemeProvider>
     );
   }
 }
+
+PostList.propTypes = {
+  fetchData: PropTypes.func.isRequired,
+  postList: PropTypes.array.isRequired,
+  hasErrored: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return {
+    postList: state.postList,
+    hasErrored: state.postListHasErrored,
+    isLoading: state.postListIsLoading
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchData: (url) => dispatch(postListFetchData(url))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostList)

@@ -1,4 +1,1 @@
-
-const  BaseUrl = "http://localhost:8000"
-
-export default BaseUrl;
+export const  $SERVER = 'http://localhost:8000'
