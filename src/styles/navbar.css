@@ -1,0 +1,13 @@
+
+#appbar{
+  padding: 0px 0px 0px 10px;
+}
+
+.nav-button{
+  margin-right: 10px;
+}
+
+.nav-button a{
+  text-decoration: none;
+  color: white;
+}

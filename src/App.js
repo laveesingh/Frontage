@@ -4,7 +4,7 @@ import {
   Link,
   Route,
 } from 'react-router-dom';
-import Base from './components/Base';
+import Navbar from './components/Navbar';
 import Home from './components/Home';
 import PostList from './components/PostList';
 import PostDetail from './components/PostDetail';
@@ -16,7 +16,7 @@ class App extends React.Component {
     return (
         <Router >
           <div>
-            <Base />
+            <Navbar />
             <Route exact path="/" component={Home} />
             <Route exact path="/posts/" component={PostList} />
             <Route path="/post/:id" component={PostDetail} />
