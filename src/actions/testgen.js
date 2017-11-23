@@ -61,38 +61,3 @@ export function checkVerticalArray(value){
     value
   }
 }
-
-export function checkLowercase(checked){
-  return{
-    type: 'CHECK_LOWERCASE',
-    checked,
-  }
-}
-
-export function checkUppercase(checked){
-  return{
-    type: 'CHECK_UPPERCASE',
-    checked,
-  }
-}
-
-export function checkDigits(checked){
-  return{
-    type: 'CHECK_DIGITS',
-    checked,
-  }
-}
-
-export function checkSymbols(checked){
-  return{
-    type: 'CHECK_SYMBOLS',
-    checked,
-  }
-}
-
-export function changeStringLength(value){
-  return {
-    type: 'CHANGE_STRING_LENGTH',
-    value
-  }
-}
