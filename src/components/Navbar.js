@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 
+import Paper from 'material-ui/Paper'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Button from 'material-ui/Button'
@@ -21,7 +22,7 @@ class Navbar extends React.Component{
   
   render(){
     return (
-      <AppBar position="static" id='appbar'>
+      <AppBar position="static" id='appbar' color='white' >
         <Toolbar disableGutters>
           <Link to='/'>
             <Button color="primary" label="Home" primary={true} raised 

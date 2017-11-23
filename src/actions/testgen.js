@@ -1,36 +1,56 @@
 
-export function testgenNOTChange(noOfTests){
+export function noOfTestsChange(noOfTests){
   return {
-    type: 'TESTGEN_NOT_CHANGE',
+    type: 'NOT_CHANGE',
     noOfTests
   }
 }
 
-export function testgenNOTCheckChange(checked){
+export function noOfTestsCheckChange(checked){
   return {
-    type: 'TESTGEN_NOT_CHECK_CHANGE',
+    type: 'NOT_CHECK_CHANGE',
     checked
   }
 }
 
-export function testgenTestTypeChange(value){
+export function TestTypeChange(value){
   return {
-    type: 'TESTGEN_TEST_TYPE_CHANGE',
+    type: 'TEST_TYPE_CHANGE',
     value
   }
 }
 
-export function testgenChangeIntegerRangeFrom(value){
+export function ChangeIntegerRangeFrom(value){
   return {
-    type: 'TESTGEN_CHANGE_INTEGER_RANGE_FROM',
+    type: 'CHANGE_INTEGER_RANGE_FROM',
     value
   }
 }
 
-export function testgenChangeIntegerRangeTo(value){
+export function ChangeIntegerRangeTo(value){
   return {
-    type: 'TESTGEN_CHANGE_INTEGER_RANGE_TO',
+    type: 'CHANGE_INTEGER_RANGE_TO',
     value
   }
 }
 
+export function ChangeArrayNoOfItems(value){
+  return {
+    type: 'CHANGE_ARRAY_NO_OF_ITEMS',
+    value
+  }
+}
+
+export function ChangeArrayElementRangeFrom(value){
+  return {
+    type: 'CHANGE_ARRAY_ELEMENT_RANGE_FROM',
+    value
+  }
+}
+
+export function ChangeArrayElementRangeTo(value){
+  return {
+    type: 'CHANGE_ARRAY_ELEMENT_RANGE_TO',
+    value
+  }
+}

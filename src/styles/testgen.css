@@ -7,3 +7,20 @@
 .grid-spec-row{
   margin-top: 20px !important;
 }
+
+#left-paper{
+  overflow: hidden;
+}
+
+.paper-footer{
+  height: 70px;
+  background-color: #37a000;
+  overflow: hidden !important;
+}
+
+.paper-header{
+  height: 70px;
+  background-color: #37a000;
+  overflow: hidden !important;
+}
+
