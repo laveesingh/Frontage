@@ -21,6 +21,7 @@ import {
   ChangeArrayNoOfItems,
   ChangeArrayElementRangeFrom,
   ChangeArrayElementRangeTo,
+  checkVerticalArray,
 } from '../actions/testgen'
 
 class TestGen extends React.Component{
@@ -30,9 +31,7 @@ class TestGen extends React.Component{
         <Grid item lg={6} md={6} sm={6} >
           <Paper fullWidth id='left-paper'>
             <Grid container >
-              <Grid item lg={12} md={12} sm={12} className='paper-header'>
-                
-              </Grid>
+              <Grid item lg={12} md={12} sm={12} className='paper-header'> </Grid>
               <Grid item lg={12} md={12} sm={12} >
                 <Grid container id='left-bar' >
                   <Grid item lg={12} md={12} sm={12} className='grid-spec-row'>
@@ -159,6 +158,23 @@ class TestGen extends React.Component{
                         />
                       </Grid>
                       <Grid item lg={2} md={2} sm={2} > </Grid>
+
+                      <Grid item lg={3} md={3} sm={3} > </Grid>
+                      <Grid item lg={6} md={6} sm={6} >
+                        <FormControlLabel
+                          control={
+                            <Switch
+                              checked={this.props.checkedVerticalArray}
+                              onChange={ (event, checked) => 
+                                  this.props.checkVerticalArray(checked) 
+                              }
+                            />
+                          }
+                          label='vertical array output'
+                        />
+                      </Grid>
+                      <Grid item lg={3} md={3} sm={3} > </Grid>
+
                     </Grid>
                   </Grid>
                 </Grid>
@@ -188,6 +204,7 @@ const mapStateToProps = (state) => {
     arrayNoOfItems: state.ArrayNoOfItems.arrayNoOfItems,
     arrayElementRangeFrom: state.ArrayElementRangeFrom.arrayElementRangeFrom,
     arrayElementRangeTo: state.ArrayElementRangeTo.arrayElementRangeTo,
+    checkedVerticalArray: state.verticalArray.checkedVerticalArray,
   }
 }
 
@@ -201,6 +218,7 @@ const mapDispatchToProps = (dispatch) => {
     changeArrayNoOfItems: (event) => dispatch(ChangeArrayNoOfItems(event.target.value)),
     changeArrayElementRangeFrom: (event) => dispatch(ChangeArrayElementRangeFrom(event.target.value)),
     changeArrayElementRangeTo: (event) => dispatch(ChangeArrayElementRangeTo(event.target.value)),
+    checkVerticalArray: (checked) => dispatch(checkVerticalArray(checked)),
   }
 }
 

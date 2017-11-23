@@ -54,3 +54,10 @@ export function ChangeArrayElementRangeTo(value){
     value
   }
 }
+
+export function checkVerticalArray(value){
+  return {
+    type: 'CHECK_VERTICAL_ARRAY',
+    value
+  }
+}

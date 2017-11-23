@@ -14,6 +14,7 @@ export function noOfTestsCheck(state={checkedNoOfTests: false}, action){
   }
   return state
 }
+
 export function TestType(state={testType: 'int'}, action){
   switch(action.type){
     case 'TEST_TYPE_CHANGE':
@@ -61,3 +62,12 @@ export function ArrayElementRangeFrom(state={arrayElementRangeFrom: 0}, action){
   }
   return state
 }
+
+export function verticalArray(state={checkedVerticalArray: false}, action){
+  switch(action.type){
+    case 'CHECK_VERTICAL_ARRAY':
+      return {checkedVerticalArray: action.value}
+  }
+  return state
+}
+
