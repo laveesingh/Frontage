@@ -5,7 +5,7 @@ import {
   noOfTests, noOfTestsCheck, TestType, IntegerRangeFrom,
   IntegerRangeTo, ArrayNoOfItems,
   ArrayElementRangeTo, ArrayElementRangeFrom,
-  verticalArray
+  verticalArray, lowercase, uppercase, digits, symbols, stringLength
 } from './testgen'
 
 // (import reducer_name from 'reducers/index.js' ) => here reducer_name will automatically refer to the following default export
@@ -15,13 +15,8 @@ export default combineReducers({
   //postListFetchDataSuccess,
   navbarClickBlogMenu,
   navbarClickToolsMenu,
-  noOfTests,
-  noOfTestsCheck,
-  TestType,
-  IntegerRangeFrom,
-  IntegerRangeTo,
-  ArrayNoOfItems,
-  ArrayElementRangeTo,
-  ArrayElementRangeFrom,
-  verticalArray,
+  noOfTests, noOfTestsCheck, TestType,
+  IntegerRangeFrom, IntegerRangeTo,
+  ArrayNoOfItems, ArrayElementRangeTo, ArrayElementRangeFrom, verticalArray,
+  lowercase, uppercase, digits, symbols, stringLength
 })
