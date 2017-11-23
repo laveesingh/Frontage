@@ -9,7 +9,10 @@ import Menu, { MenuItem } from 'material-ui/Menu'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import '../styles/navbar.css'
 
-import { navbarOpenBlogMenu, navbarCloseBlogMenu } from '../actions/navbar'
+import {
+  navbarOpenBlogMenu, navbarCloseBlogMenu,
+  navbarOpenToolsMenu, navbarCloseToolsMenu,
+} from '../actions/navbar'
 
 class Navbar extends React.Component{
   constructor(props){
@@ -20,17 +23,20 @@ class Navbar extends React.Component{
     return (
       <AppBar position="static" id='appbar'>
         <Toolbar disableGutters>
-          <Button color="primary" label="Home" primary={true} raised 
+          <Link to='/'>
+            <Button color="primary" label="Home" primary={true} raised 
              className={{'nav-button': true, 'home-button': true}} >
-            <Link to="/"> Home </Link>
-          </Button>
-          <Button raised color='primary' className='nav-button'
+             Home 
+            </Button>
+          </Link>
+          <Button raised color='primary' className='nav-button' id='blog-button'
             aria-owns={this.props.blogMenuOpened ? 'blog-menu' : null}
             aria-haspopup='true' onClick={this.props.openBlogMenu} >
             Blog
           </Button>
           <Menu id='blog-menu' open={this.props.blogMenuOpened}
-            onRequestClose={this.props.closeBlogMenu} >
+            anchorEl={document.getElementById('blog-button')}
+            className='nav-menu' onRequestClose={this.props.closeBlogMenu} >
             <MenuItem onClick={this.props.closeBlogMenu}>Posts</MenuItem>
             <MenuItem onClick={this.props.closeBlogMenu}>About Me</MenuItem>
           </Menu>
@@ -40,6 +46,19 @@ class Navbar extends React.Component{
               PostList 
             </Link>
           </Button>
+          <Button color='primary' raised className='nav-button' id='tools-button'
+            aria-owns={this.props.toolsMenuOpened ? 'tools-menu' : null}
+            aria-haspopup='true' onClick={this.props.openToolsMenu} >
+            Tools
+          </Button>
+          <Menu id='tools-menu' open={this.props.toolsMenuOpened} 
+            anchorEl={document.getElementById('tools-button')}
+            className='nav-menu' onRequestClose={this.props.closeToolsMenu} >
+            <MenuItem onClick={this.props.closeToolsMenu}>
+              <Link to='/testgen'>Testcase Generator</Link>
+            </MenuItem>
+            <MenuItem onClick={this.props.closeToolsMenu}>Codeforces Analyzer</MenuItem>
+          </Menu>
           <Button color="primary" label="CreatePost" primary={true} raised 
             className='nav-button' >
             <Link to="/posts/create/"> 
@@ -54,14 +73,17 @@ class Navbar extends React.Component{
 
 const mapStateToProps = (state) => {
   return {
-    blogMenuOpened: state.navbarClickBlogMenu.blogMenuOpened
+    blogMenuOpened: state.navbarClickBlogMenu.blogMenuOpened,
+    toolsMenuOpened: state.navbarClickToolsMenu.toolsMenuOpened
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     openBlogMenu: () => dispatch(navbarOpenBlogMenu()),
-    closeBlogMenu: () => dispatch(navbarCloseBlogMenu())
+    closeBlogMenu: () => dispatch(navbarCloseBlogMenu()),
+    openToolsMenu: () => dispatch(navbarOpenToolsMenu()),
+    closeToolsMenu: () => dispatch(navbarCloseToolsMenu())
   }
 }
 
